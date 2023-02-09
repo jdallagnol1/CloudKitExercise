@@ -14,6 +14,12 @@
 		26D3C19D2993E383006A7751 /* UploadingFilesExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C19C2993E383006A7751 /* UploadingFilesExerciseTests.swift */; };
 		26D3C1A72993E383006A7751 /* UploadingFilesExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1A62993E383006A7751 /* UploadingFilesExerciseUITests.swift */; };
 		26D3C1A92993E383006A7751 /* UploadingFilesExerciseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1A82993E383006A7751 /* UploadingFilesExerciseUITestsLaunchTests.swift */; };
+		26D3C1B72993E656006A7751 /* Local.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1B52993E656006A7751 /* Local.xcdatamodeld */; };
+		26D3C1B92993E84A006A7751 /* LocalDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1B82993E84A006A7751 /* LocalDataController.swift */; };
+		26D3C1BB2993FD37006A7751 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1BA2993FD37006A7751 /* Patient.swift */; };
+		26D3C1BD2993FDA1006A7751 /* PatientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1BC2993FDA1006A7751 /* PatientsListView.swift */; };
+		26D3C1C32994723C006A7751 /* PatientsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1C22994723C006A7751 /* PatientsListViewModel.swift */; };
+		26D3C1C529947576006A7751 /* PDFKitRepresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1C429947576006A7751 /* PDFKitRepresentedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +50,13 @@
 		26D3C1A22993E383006A7751 /* UploadingFilesExerciseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UploadingFilesExerciseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26D3C1A62993E383006A7751 /* UploadingFilesExerciseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadingFilesExerciseUITests.swift; sourceTree = "<group>"; };
 		26D3C1A82993E383006A7751 /* UploadingFilesExerciseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadingFilesExerciseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		26D3C1B62993E656006A7751 /* Local.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Local.xcdatamodel; sourceTree = "<group>"; };
+		26D3C1B82993E84A006A7751 /* LocalDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataController.swift; sourceTree = "<group>"; };
+		26D3C1BA2993FD37006A7751 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		26D3C1BC2993FDA1006A7751 /* PatientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsListView.swift; sourceTree = "<group>"; };
+		26D3C1BE29941910006A7751 /* UploadingFilesExercise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UploadingFilesExercise.entitlements; sourceTree = "<group>"; };
+		26D3C1C22994723C006A7751 /* PatientsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsListViewModel.swift; sourceTree = "<group>"; };
+		26D3C1C429947576006A7751 /* PDFKitRepresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFKitRepresentedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +107,14 @@
 		26D3C18A2993E381006A7751 /* UploadingFilesExercise */ = {
 			isa = PBXGroup;
 			children = (
+				26D3C1BE29941910006A7751 /* UploadingFilesExercise.entitlements */,
 				26D3C18B2993E381006A7751 /* UploadingFilesExerciseApp.swift */,
-				26D3C18D2993E381006A7751 /* ContentView.swift */,
+				26D3C1C129947225006A7751 /* Views */,
+				26D3C1BA2993FD37006A7751 /* Patient.swift */,
 				26D3C18F2993E383006A7751 /* Assets.xcassets */,
 				26D3C1912993E383006A7751 /* Preview Content */,
+				26D3C1B52993E656006A7751 /* Local.xcdatamodeld */,
+				26D3C1B82993E84A006A7751 /* LocalDataController.swift */,
 			);
 			path = UploadingFilesExercise;
 			sourceTree = "<group>";
@@ -125,6 +142,17 @@
 				26D3C1A82993E383006A7751 /* UploadingFilesExerciseUITestsLaunchTests.swift */,
 			);
 			path = UploadingFilesExerciseUITests;
+			sourceTree = "<group>";
+		};
+		26D3C1C129947225006A7751 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				26D3C18D2993E381006A7751 /* ContentView.swift */,
+				26D3C1C429947576006A7751 /* PDFKitRepresentedView.swift */,
+				26D3C1BC2993FDA1006A7751 /* PatientsListView.swift */,
+				26D3C1C22994723C006A7751 /* PatientsListViewModel.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +285,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D3C1B72993E656006A7751 /* Local.xcdatamodeld in Sources */,
+				26D3C1B92993E84A006A7751 /* LocalDataController.swift in Sources */,
 				26D3C18E2993E381006A7751 /* ContentView.swift in Sources */,
 				26D3C18C2993E381006A7751 /* UploadingFilesExerciseApp.swift in Sources */,
+				26D3C1C529947576006A7751 /* PDFKitRepresentedView.swift in Sources */,
+				26D3C1C32994723C006A7751 /* PatientsListViewModel.swift in Sources */,
+				26D3C1BD2993FDA1006A7751 /* PatientsListView.swift in Sources */,
+				26D3C1BB2993FD37006A7751 /* Patient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +448,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UploadingFilesExercise/UploadingFilesExercise.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UploadingFilesExercise/Preview Content\"";
@@ -443,6 +478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UploadingFilesExercise/UploadingFilesExercise.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UploadingFilesExercise/Preview Content\"";
@@ -583,6 +619,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		26D3C1B52993E656006A7751 /* Local.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				26D3C1B62993E656006A7751 /* Local.xcdatamodel */,
+			);
+			currentVersion = 26D3C1B62993E656006A7751 /* Local.xcdatamodel */;
+			path = Local.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 26D3C1802993E381006A7751 /* Project object */;
 }
