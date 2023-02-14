@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26C4A3F4299AF755004157D8 /* CloudPatientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4A3F3299AF755004157D8 /* CloudPatientsListView.swift */; };
 		26D3C18C2993E381006A7751 /* UploadingFilesExerciseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C18B2993E381006A7751 /* UploadingFilesExerciseApp.swift */; };
 		26D3C18E2993E381006A7751 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C18D2993E381006A7751 /* ContentView.swift */; };
 		26D3C1902993E383006A7751 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26D3C18F2993E383006A7751 /* Assets.xcassets */; };
@@ -16,9 +17,8 @@
 		26D3C1A92993E383006A7751 /* UploadingFilesExerciseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1A82993E383006A7751 /* UploadingFilesExerciseUITestsLaunchTests.swift */; };
 		26D3C1B72993E656006A7751 /* Local.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1B52993E656006A7751 /* Local.xcdatamodeld */; };
 		26D3C1B92993E84A006A7751 /* LocalDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1B82993E84A006A7751 /* LocalDataController.swift */; };
-		26D3C1BB2993FD37006A7751 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1BA2993FD37006A7751 /* Patient.swift */; };
-		26D3C1BD2993FDA1006A7751 /* PatientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1BC2993FDA1006A7751 /* PatientsListView.swift */; };
-		26D3C1C32994723C006A7751 /* PatientsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1C22994723C006A7751 /* PatientsListViewModel.swift */; };
+		26D3C1BB2993FD37006A7751 /* PatientLocalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1BA2993FD37006A7751 /* PatientLocalModel.swift */; };
+		26D3C1BD2993FDA1006A7751 /* LocalPatientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1BC2993FDA1006A7751 /* LocalPatientsListView.swift */; };
 		26D3C1C529947576006A7751 /* PDFKitRepresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D3C1C429947576006A7751 /* PDFKitRepresentedView.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26C4A3F3299AF755004157D8 /* CloudPatientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudPatientsListView.swift; sourceTree = "<group>"; };
 		26D3C1882993E381006A7751 /* UploadingFilesExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UploadingFilesExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26D3C18B2993E381006A7751 /* UploadingFilesExerciseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadingFilesExerciseApp.swift; sourceTree = "<group>"; };
 		26D3C18D2993E381006A7751 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,10 +53,9 @@
 		26D3C1A82993E383006A7751 /* UploadingFilesExerciseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadingFilesExerciseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		26D3C1B62993E656006A7751 /* Local.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Local.xcdatamodel; sourceTree = "<group>"; };
 		26D3C1B82993E84A006A7751 /* LocalDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataController.swift; sourceTree = "<group>"; };
-		26D3C1BA2993FD37006A7751 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
-		26D3C1BC2993FDA1006A7751 /* PatientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsListView.swift; sourceTree = "<group>"; };
+		26D3C1BA2993FD37006A7751 /* PatientLocalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientLocalModel.swift; sourceTree = "<group>"; };
+		26D3C1BC2993FDA1006A7751 /* LocalPatientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPatientsListView.swift; sourceTree = "<group>"; };
 		26D3C1BE29941910006A7751 /* UploadingFilesExercise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UploadingFilesExercise.entitlements; sourceTree = "<group>"; };
-		26D3C1C22994723C006A7751 /* PatientsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsListViewModel.swift; sourceTree = "<group>"; };
 		26D3C1C429947576006A7751 /* PDFKitRepresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFKitRepresentedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,10 +84,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26C4A3F02995337C004157D8 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				26D3C1B52993E656006A7751 /* Local.xcdatamodeld */,
+				26D3C1B82993E84A006A7751 /* LocalDataController.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		26C4A3F129953384004157D8 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				26D3C1C429947576006A7751 /* PDFKitRepresentedView.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		26C4A3F229953393004157D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				26D3C1BA2993FD37006A7751 /* PatientLocalModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		26D3C17F2993E381006A7751 = {
 			isa = PBXGroup;
 			children = (
 				26D3C18A2993E381006A7751 /* UploadingFilesExercise */,
+				26D3C18F2993E383006A7751 /* Assets.xcassets */,
 				26D3C19B2993E383006A7751 /* UploadingFilesExerciseTests */,
 				26D3C1A52993E383006A7751 /* UploadingFilesExerciseUITests */,
 				26D3C1892993E381006A7751 /* Products */,
@@ -110,11 +136,9 @@
 				26D3C1BE29941910006A7751 /* UploadingFilesExercise.entitlements */,
 				26D3C18B2993E381006A7751 /* UploadingFilesExerciseApp.swift */,
 				26D3C1C129947225006A7751 /* Views */,
-				26D3C1BA2993FD37006A7751 /* Patient.swift */,
-				26D3C18F2993E383006A7751 /* Assets.xcassets */,
+				26C4A3F229953393004157D8 /* Model */,
 				26D3C1912993E383006A7751 /* Preview Content */,
-				26D3C1B52993E656006A7751 /* Local.xcdatamodeld */,
-				26D3C1B82993E84A006A7751 /* LocalDataController.swift */,
+				26C4A3F02995337C004157D8 /* CoreData */,
 			);
 			path = UploadingFilesExercise;
 			sourceTree = "<group>";
@@ -147,10 +171,10 @@
 		26D3C1C129947225006A7751 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				26C4A3F129953384004157D8 /* Helper */,
 				26D3C18D2993E381006A7751 /* ContentView.swift */,
-				26D3C1C429947576006A7751 /* PDFKitRepresentedView.swift */,
-				26D3C1BC2993FDA1006A7751 /* PatientsListView.swift */,
-				26D3C1C22994723C006A7751 /* PatientsListViewModel.swift */,
+				26D3C1BC2993FDA1006A7751 /* LocalPatientsListView.swift */,
+				26C4A3F3299AF755004157D8 /* CloudPatientsListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -289,10 +313,10 @@
 				26D3C1B92993E84A006A7751 /* LocalDataController.swift in Sources */,
 				26D3C18E2993E381006A7751 /* ContentView.swift in Sources */,
 				26D3C18C2993E381006A7751 /* UploadingFilesExerciseApp.swift in Sources */,
+				26C4A3F4299AF755004157D8 /* CloudPatientsListView.swift in Sources */,
 				26D3C1C529947576006A7751 /* PDFKitRepresentedView.swift in Sources */,
-				26D3C1C32994723C006A7751 /* PatientsListViewModel.swift in Sources */,
-				26D3C1BD2993FDA1006A7751 /* PatientsListView.swift in Sources */,
-				26D3C1BB2993FD37006A7751 /* Patient.swift in Sources */,
+				26D3C1BD2993FDA1006A7751 /* LocalPatientsListView.swift in Sources */,
+				26D3C1BB2993FD37006A7751 /* PatientLocalModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
