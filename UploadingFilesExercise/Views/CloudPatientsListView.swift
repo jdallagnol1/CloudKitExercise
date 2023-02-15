@@ -14,8 +14,14 @@ struct CloudPatientsListView: View {
     @State var patients: [PatientLocalModel] = []
     //
     
-    @State var showPDF: Bool = false
-    @State var patientName: String = ""
+    @State var showPDF: Bool = false {
+        didSet {
+            if self.showPDF == false {
+                selectedPatientName = ""
+            }
+        }
+    }
+    @State var selectedPatientName: String = ""
     
     
     init() {
@@ -34,15 +40,22 @@ struct CloudPatientsListView: View {
                 Text(patient.name ?? "no name registered")
                     .onTapGesture {
                         self.showPDF = true
-                        self.patientName = patient.name ?? "no name registered"
+                        self.selectedPatientName = patient.name ?? "no name registered"
                     }
             }
             .onDelete(perform: delete)
         }
         .sheet(isPresented: $showPDF) {
-            Text("PDF File: \(self.patientName)")
-            Text("TODOOO:")
-            PDFKitRepresentedView(getPdfFile(name: patientName))
+            Text("PDF File: \(self.selectedPatientName)")
+            
+//            Button {
+////                self.refreshViewer
+//            } label: {
+//                <#code#>/
+//            }
+
+
+            PDFKitRepresentedView(getPdfFile(name: selectedPatientName))
         }
         
     }

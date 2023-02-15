@@ -27,7 +27,7 @@ struct ContentView: View {
     @State var fileURL: URL?
     @State private var fileName: String = ""
     @State private var patientName: String = ""
-    @State private var examToUpload: Data?
+    @State private var dataSelectedExam: Data?
     
     
     var body: some View {
@@ -49,7 +49,7 @@ struct ContentView: View {
                     Text("File Picker")
                 }
                 
-                PDFKitRepresentedView(examToUpload ?? Data())
+                PDFKitRepresentedView(dataSelectedExam ?? Data())
                 
                 Spacer()
                 Group {
@@ -74,7 +74,7 @@ struct ContentView: View {
                         
                         VStack {
                             Button {
-                                self.tapSaveToiCloud()
+                                self.tapSaveToiCloud(pdfData: dataSelectedExam ?? Data())
                             } label: {
                                 Text("Save to iCloud")
                             }
@@ -118,14 +118,15 @@ extension ContentView {
         do{
             let fileUrlArray = try res.get()
             let fileUrl = fileUrlArray[0]
-            print(fileUrl)
-            //
+            
             guard fileUrl.startAccessingSecurityScopedResource() else { return }
             
             let fileData = try Data(contentsOf: fileUrl)
             
-            self.examToUpload = fileData
+            self.dataSelectedExam = fileData
+            self.fileURL = fileUrl
             fileUrl.stopAccessingSecurityScopedResource()
+            
         } catch {
             print ("error reading")
             print (error.localizedDescription)
@@ -133,14 +134,10 @@ extension ContentView {
     }
     
     func tapAllLocalPatients() {
-        //this is just to clean the textfields???
-//        self.fileName = ""
-//        self.patientName = ""
         path.append(.localPatientsListView)
     }
     
     func tapAllCloudPatients() {
-//        self.fileName
         path.append(.cloudPatientsListView)
     }
     
@@ -150,38 +147,53 @@ extension ContentView {
         
         patient.id = UUID()
         patient.name = "Exame \(self.fileName) de \(self.patientName)"
-        patient.exam = self.examToUpload
+        patient.exam = self.dataSelectedExam
         
         try? moc.save()
     }
     
-    func tapSaveToiCloud() {
+    func pdfToCKAsset(pdfData: Data) -> CKAsset? {
+        if pdfData.isEmpty { return nil }
+        
+        let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString+".dat")
+        do {
+            try pdfData.write(to: url) //data!.writeToURL(url, options: [])
+        } catch let error {
+            print("Error! \(error)");
+            return nil
+        }
+        return CKAsset(fileURL: url)
+    }
+
+    
+    func tapSaveToiCloud(pdfData: Data) {
         print(#function)
+        
         let record = CKRecord(recordType: "Patient")
-        
         record.setValue("Exame \(self.fileName) de \(self.patientName)", forKey: "name")
-        record.setValue(self.examToUpload, forKey: "exam")
         
-        if self.fileURL != nil {
-            let examAsset = CKAsset(fileURL: self.fileURL!)
-            record["exam"] = examAsset
+        
+        if self.fileURL != nil && self.dataSelectedExam != nil {
+            let examAsset = pdfToCKAsset(pdfData: pdfData)
+            record["examAsset"] = examAsset
         }
         
-        privateDatabase.save(record) { record, error in
+        privateDatabase.save(record) { savedRecord, error in
             print("entrou closure")
-            if record != nil, error == nil {
+            if savedRecord != nil, error == nil {
                 print("saved to iCloud")
             }
             else {
                 print("some error: \(String(describing: error)) ")
             }
+            
         }
         
     }
     
     
 }
- 
+
 extension CKDatabase {
     func fetchAll(
         recordType: String, resultsLimit: Int = 100, timeout: TimeInterval = 60,
