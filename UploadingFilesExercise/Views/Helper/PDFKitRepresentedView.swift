@@ -7,8 +7,8 @@ struct PDFKitRepresentedView: UIViewRepresentable {
     let data: Data
     let singlePage: Bool
 
-    init(_ data: Data, singlePage: Bool = false) {
-        self.data = data
+    init(_ data: Data?, singlePage: Bool = false) {
+        self.data = data ?? Data()
         self.singlePage = singlePage
     }
 

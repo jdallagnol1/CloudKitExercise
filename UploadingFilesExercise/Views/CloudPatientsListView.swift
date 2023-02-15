@@ -21,14 +21,17 @@ struct CloudPatientsListView: View {
             }
         }
     }
-    @State var selectedPatientName: String = ""
     
+    @State var selectedPatientName: String = ""
+    @State var selectedExam: Data = Data()
+    @State var isLoadedLabel: String = ""
     
     init() {
     }
     
     var body: some View {
         Text("Patients stored on iCloud")
+        
         Button {
             self.fetchPatients()
         } label: {
@@ -37,25 +40,32 @@ struct CloudPatientsListView: View {
         
         List {
             ForEach(patients, id: \.self) { patient in
-                Text(patient.name ?? "no name registered")
-                    .onTapGesture {
+                HStack {
+                    Text(patient.name ?? "no name registered")
+                    Spacer()
+//                    Image(systemName: "circle")
+                    Text(self.isLoadedLabel)
+                    
+                }
+                .onTapGesture {
+                    self.selectedPatientName = patient.name ?? "no name registered"
+                    
+                    if let exam = patient.exam {
+                        self.selectedExam = exam
                         self.showPDF = true
-                        self.selectedPatientName = patient.name ?? "no name registered"
+                    } else {
+                        self.showPDF = false
+                        print("no PDF File to show")
                     }
+                }
             }
             .onDelete(perform: delete)
         }
         .sheet(isPresented: $showPDF) {
             Text("PDF File: \(self.selectedPatientName)")
             
-//            Button {
-////                self.refreshViewer
-//            } label: {
-//                <#code#>/
-//            }
-
-
-            PDFKitRepresentedView(getPdfFile(name: selectedPatientName))
+            
+            PDFKitRepresentedView(self.selectedExam)
         }
         
     }
@@ -64,8 +74,6 @@ struct CloudPatientsListView: View {
 extension CloudPatientsListView {
     
     func delete(at offsets: IndexSet) {
-        
-        
         let idsToDelete = offsets.map { self.patients[$0].recordID }
         
         // schedule remote delete for selected ids
@@ -97,8 +105,11 @@ extension CloudPatientsListView {
                         var localPatient = PatientLocalModel()
                         localPatient.name = cloudPatient.value(forKey: "name") as? String
                         localPatient.id = cloudPatient.value(forKey: "id") as? UUID
-                        localPatient.exam = cloudPatient.value(forKey: "exam") as? NSData
                         localPatient.recordID = cloudPatient.recordID
+                        
+                        if let examCKAsset = cloudPatient.value(forKey: "examAsset") as? CKAsset {
+                            localPatient.exam = CKAssetToData(ckAsset: examCKAsset)
+                        }
                         
                         patients.append(localPatient)
                     }
@@ -111,33 +122,36 @@ extension CloudPatientsListView {
         
     }
     
-    //        func deleteAllPatients() {
-    //            while !patients.isEmpty {
-    //                for patient in patients {
-    //                    privateDatabase.delete(withRecordID: patient.recordID!) { deletedRecordID, error in
-    //                        if error == nil {
-    //                            print("deleted patient \(patient.name)")
-    //                            patients.removeFirst()
-    //                        } else {
-    //                            print(error)
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //        }
     
-    func getPdfFile(name: String) -> Data {
-        let size = patients.count
+    
+    func CKAssetToData(ckAsset: CKAsset?) -> Data? {
+        if ckAsset == nil { return nil }
         
-        for index in 0..<size {
-            if patients[index].name == name {
-                let data = Data(referencing: patients[index].exam ?? NSData())
-                return data
-            }
+        guard
+            let exam = ckAsset,
+            let fileURL = exam.fileURL //verificar url se voltar a deitar a foto
+        else {
+            return nil
         }
         
-        return Data()
+        let examData: Data
+        do {
+            examData = try Data(contentsOf: fileURL)
+            return examData
+        } catch {
+            return nil
+        }
+//
+//        do {
+//            try let exam = Data(contentsOf: fileURL)
+//            return exam
+//        } catch {
+//            return nil
+//        }
+        
     }
+    
+    
 }
 
 struct CloudPatientsListView_Previews: PreviewProvider {

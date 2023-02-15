@@ -11,6 +11,6 @@ import CloudKit
 struct PatientLocalModel: Identifiable, Hashable {
     var id: UUID?
     var name: String?
-    var exam: NSData?
+    var exam: Data?
     var recordID: CKRecord.ID?
 }
